@@ -1,5 +1,6 @@
 # Ignore virtual environment
 env/
+myenv/
 
 # Ignore database
 db.sqlite3

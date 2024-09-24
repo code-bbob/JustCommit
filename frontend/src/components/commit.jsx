@@ -11,6 +11,7 @@ const Commit =({commit})=>{
     const navigate = useNavigate();
     const api = useAxios();
 
+    console.log(commit);
     
   const handleLike = async (e, commit) => {
     try {
@@ -34,11 +35,10 @@ const Commit =({commit})=>{
   };
   
     return(
-<>
             <div className="w-auto max-w-[80%] my-4">
-              <Card className=" bg-black text-white" onClick={() =>navigate(`/commit/${commit.code}`)}>
+              <Card className=" bg-black text-white" onClick={() =>navigate(`/commit/${commit?.code}`)}>
                 <CardHeader>
-                <CardTitle>{commit.title}</CardTitle>
+                <CardTitle>{commit?.title}</CardTitle>
                 <div className="border-t border-white"></div>
                 <CardDescription className="text-">
                           <p>Posted on: {commit?.date}</p>
@@ -49,12 +49,11 @@ const Commit =({commit})=>{
                   </CardContent>
                   <CardFooter><p className='text-xl font-bold mt-8'>{likes}</p>
                  
-                  <FaHeart className='text-red-600 size-4 mt-8 mx-1 hover:scale-125 hover:text-red-800' onClick={(e) => handleLike(e, commit)}/>
-                  <a href={`/user/${commit.user?.uuid}`} className='font-serif font-medium italic ml-[600px]'>- {commit.user.name}</a>
+                  <FaHeart className={liked?'text-red-500 size-4 mt-8 mx-1 hover:scale-125 hover:text-red-800':'text-white size-4 mt-8 mx-1 hover:scale-125 hover:text-red-800'} onClick={(e) => handleLike(e, commit)}/>
+                  <a href={`/user/${commit?.user?.uuid}`} className='font-serif font-medium italic ml-[600px]'>- {commit?.user?.name}</a>
                   </CardFooter>
               </Card>
             </div>
-          </>
     )
 }
 

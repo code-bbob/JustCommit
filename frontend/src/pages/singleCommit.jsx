@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../components/navbar";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../components/ui/card";
 import useAxios from '../utils/useAxios';
+import Commit from "../components/commit";
 const SingleCommit = () => {
     const params = useParams();
     const commitCode = params.id
@@ -28,20 +29,16 @@ const SingleCommit = () => {
     },[]);
     // This is a single group page that contains the name of the group, list of users it has on the side and the commits made in that group.
     
-    return(
-        <>
-        <Navbar />
-        <Card className="mx-80 my-10 w-1/2">
-            <CardHeader>
-            <CardTitle>{commit?.title}</CardTitle>
-            <div className="border-t border-black mx-0"></div>
-            <CardDescription>Author: <a href= {`/user/${commit?.user?.uuid}`}>{commit.user?.name} </a></CardDescription>
-            </CardHeader>
-            <CardContent>Lorem Lorem Lorem ipsum Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi, rerum neque repellat sit esse voluptate quis adipisci accusantium! Sit culpa odit, incidunt eaque delectus nobis omnis quibusdam dignissimos provident aliquam! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam illum inventore voluptatum tenetur officiis, ipsam nam doloremque itaque aliquid, eligendi, alias repellat amet ex. Sunt nulla voluptatum beatae laudantium officia. dolor sit amet consectetur adipisicing elit. Ipsa deleniti voluptas possimus vitae eos? Eveniet corrupti, ipsum dolor eius voluptas perferendis repudiandae maiores sit deleniti, sed similique vero quibusdam ab!{commit.content}</CardContent>
-          </Card>
-        </>
+    return (
+  <div className="bg-gradient-to-r from-rose-500 to-teal-200 h-[100vh]">
+    <Navbar />
+    <div className="ml-64">
+    
+    <Commit commit={commit} />
+  </div>
+  </div>
+);
 
-    );
 
 }
 
